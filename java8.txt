@@ -1,0 +1,249 @@
+Java 8, 9, 11
+-------------
+
+
+Most important changes in those versions
+
+4 hours 
+
+1995 ----> first version1
+
+changes wrt to addtional features rt oops
+version ---> jdk4 ----> autoboxing, unboxing,
+collections,wrapper
+
+
+java7 ---> try with resources
+
+
+PPL---> 
+Procedure langauges
+Object Oriented languges
+Functional languages
+Modular languages
+
+java8 ----> Funtional programming
+reduces the most of the code
+increases the parallel procesing capacity
+
+Lambda expressions
+Functional interfaces
+Default and static methods in interfaces
+
+Predicates, Functions, Consumers, Supplier
+Premititve functiona interfaces
+
+Stream API's ----> process the collection objects
+:: (Double colon operators)
+Method refereces
+Date and Time API ---> Joda 
+
+rt.jar
+
+
+
+Java9
+-----
+Modular programming
+
+4500--> Heavy 
+
+modules
+
+jShell
+JMPs
+
+
+JLink
+
+Http2 Client
+
+Process API
+
+Streams
+Try with resources
+Factory methods 
+safeVarargs
+
+java11
+------
+
+lamdba Expressions
+------------------
+
+Lambda calculs----> short formed
+
+reducing the code
+
+Method without having any name, access modifier,
+and return type
+
+public void display(){
+		System.out.println("Hello World");
+}
+
+
+()->	System.out.println("Hello World");
+
+
+public int add(int a, int b){
+		return a+b;
+}
+
+(int a, int b) ->return a+b;
+
+(a,b)->return a+b;
+
+return keyword is also not required
+
+(a,b)->a+b;
+
+public boolean isEven(int a){
+		if( a%2==0)
+				return true;
+		else
+				return false;
+}
+
+(a)-> a%2==0;
+
+a-> a%2==0;
+
+public int calSalary(int basic){
+
+		// multiple lines code;
+}
+
+basic-> {
+				// multiple lines codes;
+}
+
+basic-> {
+				// multiple lines codes;
+				return value;
+}
+
+Where to use this lamdba and how?
+
+Lambda expressions are used to implement functional 
+interfaces
+
+interface Bank{
+		public void savings();
+		public void loans();
+}
+
+Functional interfaces is simply an interface with
+only one abstract method.
+
+Runnable---> thread
+Comparator  -- Compare
+Comparable  --- CompareTo
+
+
+public int calArea(int radius){
+
+	return area;
+}
+
+class Example{
+	public double calArea(int radius){
+
+	return 3.141*radius*radius;
+}
+}
+
+public int fact(int n){
+
+	return factorial;
+
+}
+
+public boolean isEven(int n)
+{
+
+	return true/false if n is even or not
+}
+
+
+public boolean isStringLength(String str)
+		return true/false if str length is >10;
+}
+
+
+Predicate, Function, Consumer, Supplier
+
+
+@FuntionalInterface
+public interface Predicate<T>{
+		public boolean test(T t);
+}
+
+
+@FuntionalInterface
+public interface BiPredicate<T1,T2>{
+		public boolean test(T1 t1, T2 t2);
+}
+Predicate<Integer> p1 = n->n%2==0;
+p1.test(10)---> true.
+p1.test(11)---> false
+
+
+Function
+
+@FunctionalInterface
+public interface Function<T,R>{
+		public R apply(T t);
+}
+
+
+@FunctionalInterface
+public interface BiFunction<T1,T2,R>{
+		public R apply(T1 t1, T2 t2);
+}
+
+
+Function<Integer,Double> f1 = radius -> 3.141.*radius*radius;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2023----->version18
