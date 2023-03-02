@@ -1,0 +1,96 @@
+Compilation:
+C:\Users\praveen\Desktop>javac --module-source-path src -d out -m demoModule
+
+
+Run with default JRE:
+C:\Users\praveen\Desktop>java --module-path out -m demoModule/packA.Test
+
+
+Creation of our own JRE only with required modules:
+---------------------------------------------------
+demoModule requires java.base module. Hence add java.base module to out directory
+(copy java.base.jmod from jdk-9\jmods to out folder)
+out
+|-java.base.jmod
+|-demoModule
+ |-module-info.class
+ |-packA
+ |-Test.class
+
+Now we can create our own JRE with JLINK command
+C:\Users\praveen\Desktop>jlink --module-path out --add-modules demoModule,java.base --output 
+praveenjre
+
+
+We can run our application with our own custom jre (praveenjre) as follows
+C:\Users\praveen\Desktop\praveenjre\bin>java -m demoModule/packA.Test
+
+
+Compressing the size of JRE with compress plugin:
+
+
+C:\Users\praveen\Desktop>jlink --module-path out --add-modules demoModule,java.base --
+compress 2 --output praveenjre2
+
+C:\Users\praveen\Desktop\praveenjre2\bin>java -m demoModule/packA.Test
+o/p: JLINK Demo To create our own customized & small JRE
+
+
+Providing our own name to the application with launcher plugin:
+---------------------------------------------------------------
+
+C:\Users\praveen\Desktop>jlink --module-path out --add-modules demoModule,java.base --
+launcher demoapp=demoModule/packA.Test --compress 2 --output praveenjre3
+
+Now we can run our application only with the name demoapp
+
+C:\Users\praveen\Desktop\praveenjre3\bin>demoapp
+JLINK Demo To create our own customized & small JRE
+
+
+
+Java10
+------
+
+Unmodifiable Collections
+------------------------
+
+There are a couple of changes related to unmodifiable collections in Java 10.
+
+
+copyOf()
+--------
+java.util.List, java.util.Map and java.util.Set each got a new static method copyOf(Collection).
+
+It returns the unmodifiable copy of the given Collection:
+
+List<Integer> copyList = List.copyOf(someIntList);
+    copyList.add(4);
+
+
+toUnmodifiableXXXX()   where xxxx = List,Map or Set  
+---------------------------------------------------
+
+java.util.stream.Collectors get additional methods to collect a Stream into unmodifiable List, Map or Set:
+
+
+List<Integer> evenList = someIntList.stream()
+      .filter(i -> i % 2 == 0)
+      .collect(Collectors.toUnmodifiableList());
+    evenList.add(4);
+
+
+Any attempt to modify such a collection would result in java.lang.UnsupportedOperationExceptionruntime exception
+
+
+
+java 
+
+
+
+
+
+
+
+
+
